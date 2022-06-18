@@ -1,7 +1,6 @@
 package or.savary;
 
 import java.sql.Date;
-import java.util.Objects;
 
 public class Utilisateur {
     private String numSecu;
@@ -12,12 +11,12 @@ public class Utilisateur {
     private String civilite;
     private Compte compte;
     private Ville villeHabitation;
-    private Ville naissance;
+    private Ville villeNaissance;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance) {
+    public Utilisateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville villeNaissance) {
         this.numSecu = numSecu;
         this.nom = nom;
         this.prenom = prenom;
@@ -26,7 +25,7 @@ public class Utilisateur {
         this.civilite = civilite;
         this.compte = compte;
         this.villeHabitation = villeHabitation;
-        this.naissance = naissance;
+        this.villeNaissance = villeNaissance;
     }
 
     public String getNumSecu() {
@@ -93,12 +92,12 @@ public class Utilisateur {
         this.villeHabitation = villeHabitation;
     }
 
-    public Ville getNaissance() {
-        return naissance;
+    public Ville getVilleNaissance() {
+        return villeNaissance;
     }
 
-    public void setNaissance(Ville naissance) {
-        this.naissance = naissance;
+    public void setVilleNaissance(Ville villeNaissance) {
+        this.villeNaissance = villeNaissance;
     }
 
     @Override
@@ -112,7 +111,7 @@ public class Utilisateur {
                 ", civilite='" + civilite + '\'' +
                 ", compte=" + compte +
                 ", villeHabitation=" + villeHabitation +
-                ", naissance=" + naissance +
+                ", naissance=" + villeNaissance +
                 '}';
     }
 
