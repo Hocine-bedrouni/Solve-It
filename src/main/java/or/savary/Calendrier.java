@@ -11,12 +11,12 @@ public class Calendrier {
     private Date date;
     private Formateur formateur;
     private FeuilleEmargement feuilleEmargement;
-    private Administration administration;
+    private Administration auteur;
 
     public Calendrier() {
     }
 
-    public Calendrier(Matiere matiere, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration administration) {
+    public Calendrier(Matiere matiere, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
         this.matiere = matiere;
         this.session = session;
         this.heure_debut = heure_debut;
@@ -24,7 +24,7 @@ public class Calendrier {
         this.date = date;
         this.formateur = formateur;
         this.feuilleEmargement = feuilleEmargement;
-        this.administration = administration;
+        this.auteur = auteur;
     }
 
     public Matiere getMatiere() {
@@ -83,12 +83,12 @@ public class Calendrier {
         this.feuilleEmargement = feuilleEmargement;
     }
 
-    public Administration getAdministration() {
-        return administration;
+    public Administration getAuteur() {
+        return auteur;
     }
 
-    public void setAdministration(Administration administration) {
-        this.administration = administration;
+    public void setAuteur(Administration auteur) {
+        this.auteur = auteur;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class Calendrier {
                 ", date=" + date +
                 ", formateur=" + formateur +
                 ", feuilleEmargement=" + feuilleEmargement +
-                ", administration=" + administration +
+                ", administration=" + auteur +
                 '}';
     }
 }

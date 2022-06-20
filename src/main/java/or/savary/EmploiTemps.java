@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class EmploiTemps {
     private int id;
-    private Administration administration;
+    private Administration auteur;
     private Session session;
     private String libelle;
     private Date date_debut_semaine;
@@ -14,9 +14,9 @@ public class EmploiTemps {
     public EmploiTemps() {
     }
 
-    public EmploiTemps(int id, Administration administration, Session session, String libelle, Date date_debut_semaine, Date date_fin_semaine, Date date_edition) {
+    public EmploiTemps(int id, Administration auteur, Session session, String libelle, Date date_debut_semaine, Date date_fin_semaine, Date date_edition) {
         this.id = id;
-        this.administration = administration;
+        this.auteur = auteur;
         this.session = session;
         this.libelle = libelle;
         this.date_debut_semaine = date_debut_semaine;
@@ -32,12 +32,12 @@ public class EmploiTemps {
         this.id = id;
     }
 
-    public Administration getAdministration() {
-        return administration;
+    public Administration getAuteur() {
+        return auteur;
     }
 
-    public void setAdministration(Administration administration) {
-        this.administration = administration;
+    public void setAuteur(Administration auteur) {
+        this.auteur = auteur;
     }
 
     public Session getSession() {
@@ -84,7 +84,7 @@ public class EmploiTemps {
     public String toString() {
         return "EmploiTemps{" +
                 "id=" + id +
-                ", administration=" + administration +
+                ", administration=" + auteur +
                 ", session=" + session +
                 ", libelle='" + libelle + '\'' +
                 ", date_debut_semaine=" + date_debut_semaine +
