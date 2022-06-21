@@ -3,6 +3,9 @@ package fr.solveit.model;
 import java.sql.Date;
 
 public class Utilisateur {
+    /**
+     *  numéro de sécurité social
+     */
     private String numSecu;
     private String nom;
     private String prenom;
