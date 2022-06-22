@@ -1,19 +1,42 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.sql.Date;
-
+@Entity
 public class Utilisateur {
     /**
      *  numéro de sécurité social
      */
+    @Id
+    @Column(name="num_secu")
     private String numSecu;
+    @Column(name="Nom")
+
     private String nom;
+    @Column(name="Prenom")
+
     private String prenom;
+    @Column(name="date_naissance")
+
     private Date dateNaissance;
+    @Column(name="adresse")
+
     private String adresse;
+    @Column(name="civilite")
+
     private String civilite;
+    @ManyToOne
+    @JoinColumn(name="Compte_id")
     private Compte compte;
+    @ManyToOne
+    @JoinColumn(name="habitation_ville_id")
+    @JoinColumn(name="habitation_departement_id",referencedColumnName="departement_id")
+    @JoinColumn(name="habitation_pays_id",referencedColumnName="departement_pays_id")
     private Ville villeHabitation;
+    @ManyToOne
+    @JoinColumn(name="naissance_ville_id")
+    @JoinColumn(name="naissance_departement_id",referencedColumnName="departement_id")
+    @JoinColumn(name="naissance_pays_id",referencedColumnName="departement_pays_id")
     private Ville villeNaissance;
 
     public Utilisateur() {

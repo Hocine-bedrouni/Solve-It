@@ -1,8 +1,18 @@
 package fr.solveit.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Comptes")
 public class Compte {
+    @Id
     private int id;
+    @Column(name = "email")
     private String email;
+    @Column(name = "mdp")
     private String mdp;
 
     public Compte() {

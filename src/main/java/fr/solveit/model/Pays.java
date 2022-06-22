@@ -1,6 +1,11 @@
 package fr.solveit.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Pays {
+    @Id
     private int id;
     private String libelle;
     private String abv;
