@@ -1,6 +1,8 @@
 package fr.solveit.model;
 
-public class Absence {
+import java.io.Serializable;
+
+public class Absence  implements Serializable {
     private FeuilleEmargement feuilleEmargement;
     private Stagiaire stagiaire;
     private Session session;

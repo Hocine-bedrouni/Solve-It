@@ -1,8 +1,9 @@
 package fr.solveit.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class FeuilleEmargement {
+public class FeuilleEmargement  implements Serializable {
     private String num;
     private String intitule;
     private String lieu;

@@ -2,10 +2,11 @@ package fr.solveit.model;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.sql.Date;
 @Entity
 @Table(name="Formateur")
-public class Formateur extends Utilisateur {
+public class Formateur extends Utilisateur implements Serializable {
     @Id
     @Column(name="num_secu")
     private String numSecu;

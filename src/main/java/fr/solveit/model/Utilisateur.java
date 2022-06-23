@@ -1,9 +1,10 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 @Entity
-public class Utilisateur {
+public class Utilisateur  implements Serializable {
     /**
      *  numéro de sécurité social
      */
