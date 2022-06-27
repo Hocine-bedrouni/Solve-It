@@ -1,9 +1,10 @@
 package fr.solveit.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Calendrier {
+public class Calendrier  implements Serializable {
     private Matiere matiere;
     private Session session;
     private Time heure_debut;

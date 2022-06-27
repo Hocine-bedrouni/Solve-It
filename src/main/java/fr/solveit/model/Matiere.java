@@ -1,9 +1,14 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Matiere")
 public class Matiere {
 
+    @Id
     private int id;
-
+    @Column(name = "libelle")
     private String libelle;
 
     public Matiere() {

@@ -1,8 +1,9 @@
 package fr.solveit.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class EmploiTemps {
+public class EmploiTemps  implements Serializable {
     private int id;
     private Administration auteur;
     private Session session;
