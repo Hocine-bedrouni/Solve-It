@@ -1,8 +1,19 @@
 package fr.solveit.model;
 
-public class Compte {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "Compte")
+public class Compte  implements Serializable {
+    @Id
     private int id;
+    @Column(name = "email")
     private String email;
+    @Column(name = "mdp")
     private String mdp;
 
     public Compte() {
