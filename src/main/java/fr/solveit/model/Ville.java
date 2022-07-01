@@ -1,15 +1,15 @@
 package fr.solveit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "ville")
 public class Ville {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
+    @Column
     private String libelle;
     @ManyToOne
     private Departement departement;

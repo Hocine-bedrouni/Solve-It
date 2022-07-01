@@ -1,15 +1,26 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-
+@Entity
+@Table(name="emploiTemps")
 public class EmploiTemps  implements Serializable {
+    @Id
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "administration_numSecu")
     private Administration auteur;
+    @ManyToOne
+    @JoinColumn(name = "session_id")
     private Session session;
+    @Column
     private String libelle;
+    @Temporal(TemporalType.DATE)
     private Date date_debut_semaine;
+    @Temporal(TemporalType.DATE)
     private Date date_fin_semaine;
+    @Temporal(TemporalType.DATE)
     private Date date_edition;
 
     public EmploiTemps() {

@@ -1,16 +1,19 @@
 package fr.solveit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name="departement")
 public class Departement {
     @Id
     private int id;
+    @Column
     private String libelle;
+    @Column
     private int num_departement;
+    @Column
     private int code_commune;
+
     @ManyToOne
     private Pays pays;
 

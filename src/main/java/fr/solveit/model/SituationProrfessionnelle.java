@@ -1,12 +1,20 @@
 package fr.solveit.model;
 
-public class SituationProrfessionnelle {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "situationProrfessionnelle")
+public class SituationProrfessionnelle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
 
     private boolean salarie;
+    @Column
 
     private boolean demandeur_emploi;
+    @Column
 
     private boolean inscription_pole_emploi;
 

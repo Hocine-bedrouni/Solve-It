@@ -1,13 +1,17 @@
 package fr.solveit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="pays")
 public class Pays {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
+
     private String libelle;
+    @Column
     private String abv;
 
     public Pays() {

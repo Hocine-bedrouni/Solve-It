@@ -1,11 +1,21 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "absence")
 public class Absence  implements Serializable {
+    @Id
     private FeuilleEmargement feuilleEmargement;
+    @ManyToOne
+    @JoinColumn(name = "stagiaire_numSecu")
     private Stagiaire stagiaire;
+
+    @ManyToOne
+    @JoinColumn(name = "session_id")
     private Session session;
+    @Column
     private boolean absent;
     private boolean absenceJustifie;
 

@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Matiere {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "libelle")
     private String libelle;

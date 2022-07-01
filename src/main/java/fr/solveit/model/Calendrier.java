@@ -1,17 +1,29 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+@Entity
+@Table(name = "calendrier")
 
 public class Calendrier  implements Serializable {
     private Matiere matiere;
     private Session session;
+    @Temporal(TemporalType.DATE)
     private Time heure_debut;
+    @Temporal(TemporalType.DATE)
     private Time heure_fin;
+    @Temporal(TemporalType.DATE)
     private Date date;
+    @ManyToOne
+    @JoinColumn(name = "formateur_numSecu")
     private Formateur formateur;
+    @Column
     private FeuilleEmargement feuilleEmargement;
+
+    @ManyToOne
+    @JoinColumn(name = "administration_numSecu")
     private Administration auteur;
 
     public Calendrier() {

@@ -1,46 +1,66 @@
 package fr.solveit.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
 
+@Entity
 public class Stagiaire extends Utilisateur{
-
+    @Id
     private String  numSecu;
+    @Column
 
     private String diplome;
+    @Column
 
     private List<String> niveau_entree;
+    @Column
 
     private boolean difficulte;
+    @Column
 
     private boolean handicape;
+    @Column
 
     private boolean domtom;
+    @Column
 
     private String situation;
-
+    @Column
     private int nbr_travailleur;
+    @Column
 
     private boolean enfant;
 
+    @Column
     private String logement;
+    @Column
 
     private String parent_francais;
+    @Column
 
     private boolean rique_perte_logement;
+    @Column
 
     private String origine_formation;
+    @Column
 
     private String transport;
+    @Column
 
     private String allocation;
+    @Column
 
     private Session session;
+
 
     private Hebergement hebergement;
 
     private SituationProrfessionnelle situationProfessionnelle;
+    @Column
 
     private Blob signature;
 

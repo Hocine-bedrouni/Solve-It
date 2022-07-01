@@ -1,15 +1,18 @@
 package fr.solveit.model;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.sql.Date;
 
 @Entity
+@Table(name = "session")
 public class Session {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String libelle;
+    @Column
+    private String libelle ;
+    @Temporal(TemporalType.DATE)
     private Date date_debut;
+    @Temporal(TemporalType.DATE)
     private Date date_fin;
 
     public Session() {
