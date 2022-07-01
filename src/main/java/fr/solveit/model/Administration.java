@@ -11,20 +11,21 @@ public class Administration {
     @Column
     private String  status;
 
+
     public Administration() {
     }
 
     public Administration(String num_secu, String status) {
-        this.num_secu = num_secu;
+        this.numSecu = num_secu;
         this.status = status;
     }
 
     public String getNum_secu() {
-        return num_secu;
+        return numSecu;
     }
 
     public void setNum_secu(String num_secu) {
-        this.num_secu = num_secu;
+        this.numSecu = num_secu;
     }
 
     public String getStatus() {

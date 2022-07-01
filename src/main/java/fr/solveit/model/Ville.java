@@ -9,7 +9,8 @@ public class Ville {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "libelle_ID")
     private String libelle;
     @ManyToOne
     private Departement departement;
