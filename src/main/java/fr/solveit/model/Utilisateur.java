@@ -11,7 +11,7 @@ public class Utilisateur  implements Serializable {
     @Id
     @Column(name="num_secu")
     private String numSecu;
-    @Column(name="Nom")
+    @Column(name="nom")
 
     private String nom;
     @Column(name="Prenom")

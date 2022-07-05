@@ -1,14 +1,22 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-
+@Entity
+@Table(name="feuille_emargement")
 public class FeuilleEmargement  implements Serializable {
+    @Id
     private String num;
+    @Column
     private String intitule;
+    @Column
     private String lieu;
+    @Temporal(TemporalType.DATE)
     private Date date_emargement;
+    @Temporal(TemporalType.DATE)
     private Date date_debut_formation;
+    @Temporal(TemporalType.DATE)
     private Date date_fin_formation;
 
     public FeuilleEmargement() {
