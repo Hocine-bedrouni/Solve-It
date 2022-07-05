@@ -6,44 +6,48 @@ import java.io.Serializable;
 @Entity
 @Table(name = "absence")
 public class Absence  implements Serializable {
-    @Id
+    @EmbeddedId
+    AbsenceId absenceId;
+/*    @ManyToOne
+    @JoinColumn(name="FeuilleEmargement_num")
     private FeuilleEmargement feuilleEmargement;
     @ManyToOne
-    @JoinColumn(name = "stagiaire_numSecu")
-    private Stagiaire stagiaire;
+    @JoinColumn(name = "stagiaire_num_secu")
+    private Stagiaire stagiaire;*/
 
     @ManyToOne
     @JoinColumn(name = "session_id")
     private Session session;
     @Column
     private boolean absent;
-    private boolean absenceJustifie;
+    @Column
+    private boolean absence_justifie;
 
     public Absence() {
     }
 
     public Absence(FeuilleEmargement feuilleEmargement, Stagiaire stagiaire, Session session, boolean absent, boolean absenceJustifie) {
-        this.feuilleEmargement = feuilleEmargement;
-        this.stagiaire = stagiaire;
+        this.absenceId.setFeuilleEmargement(feuilleEmargement);
+        this.absenceId.setStagiaire(stagiaire);
         this.session = session;
         this.absent = absent;
-        this.absenceJustifie = absenceJustifie;
+        this.absence_justifie = absenceJustifie;
     }
 
     public FeuilleEmargement getFeuilleEmergement() {
-        return feuilleEmargement;
+        return absenceId.getFeuilleEmargement();
     }
 
     public void setFeuilleEmergement(FeuilleEmargement feuilleEmargement) {
-        this.feuilleEmargement = feuilleEmargement;
+        this.absenceId.setFeuilleEmargement(feuilleEmargement);
     }
 
     public Stagiaire getStagiaire() {
-        return stagiaire;
+        return absenceId.getStagiaire();
     }
 
     public void setStagiaire(Stagiaire stagiaire) {
-        this.stagiaire = stagiaire;
+        this.absenceId.setStagiaire(stagiaire);
     }
 
     public Session getSession() {
@@ -63,21 +67,21 @@ public class Absence  implements Serializable {
     }
 
     public boolean isAbsenceJustifie() {
-        return absenceJustifie;
+        return absence_justifie;
     }
 
     public void setAbsenceJustifie(boolean absenceJustifie) {
-        this.absenceJustifie = absenceJustifie;
+        this.absence_justifie = absenceJustifie;
     }
 
     @Override
     public String toString() {
         return "Absence{" +
-                "feuilleEmergement=" + feuilleEmargement +
-                ", stagiaire=" + stagiaire +
+                "feuilleEmergement=" + getFeuilleEmergement() +
+                ", stagiaire=" + getStagiaire() +
                 ", session=" + session +
                 ", absent=" + absent +
-                ", absenceJustifie=" + absenceJustifie +
+                ", absenceJustifie=" + absence_justifie +
                 '}';
     }
 }

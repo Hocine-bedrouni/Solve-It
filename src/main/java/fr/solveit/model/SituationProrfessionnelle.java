@@ -1,22 +1,24 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "situationProrfessionnelle")
+@Table(name = "situation_prorfessionnelle")
 public class SituationProrfessionnelle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-
     private boolean salarie;
     @Column
-
     private boolean demandeur_emploi;
     @Column
-
     private boolean inscription_pole_emploi;
+
+    @OneToMany( fetch = FetchType.LAZY)
+    private List<Stagiaire> stagiaires = new ArrayList<>();
 
     public SituationProrfessionnelle() {
     }

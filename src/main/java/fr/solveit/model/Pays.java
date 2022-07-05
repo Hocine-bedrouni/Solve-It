@@ -1,6 +1,8 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="pays")
@@ -9,16 +11,17 @@ public class Pays {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-
     private String libelle;
     @Column
     private String abv;
 
+    @OneToMany(mappedBy = "pays", fetch = FetchType.LAZY)
+    private List<Departement> departements = new ArrayList<Departement>();
+
     public Pays() {
     }
 
-    public Pays(int id, String libelle, String abv) {
-        this.id = id;
+    public Pays(String libelle, String abv) {
         this.libelle = libelle;
         this.abv = abv;
     }
