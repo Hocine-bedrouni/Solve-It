@@ -2,16 +2,18 @@ package fr.solveit.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 @Entity
-public class Utilisateur  implements Serializable {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="typeUtilisateur")
+public abstract class Utilisateur  implements Serializable {
     /**
      *  numéro de sécurité social
      */
     @Id
     @Column(name="num_secu")
     private String numSecu;
-    @Column(name="Nom")
+    @Column(name="nom")
 
     private String nom;
     @Column(name="Prenom")
@@ -30,14 +32,10 @@ public class Utilisateur  implements Serializable {
     @JoinColumn(name="Compte_id")
     private Compte compte;
     @ManyToOne
-    @JoinColumn(name="habitation_ville_id")
-    @JoinColumn(name="habitation_departement_id",referencedColumnName="departement_id")
-    @JoinColumn(name="habitation_pays_id",referencedColumnName="departement_pays_id")
+    @JoinColumn(name="habitation_ville_id",referencedColumnName="id")
     private Ville villeHabitation;
     @ManyToOne
-    @JoinColumn(name="naissance_ville_id")
-    @JoinColumn(name="naissance_departement_id",referencedColumnName="departement_id")
-    @JoinColumn(name="naissance_pays_id",referencedColumnName="departement_pays_id")
+    @JoinColumn(name="naissance_ville_id",referencedColumnName="id")
     private Ville villeNaissance;
 
     public Utilisateur() {

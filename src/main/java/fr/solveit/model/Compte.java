@@ -1,20 +1,24 @@
 package fr.solveit.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Compte")
 public class Compte  implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "email")
     private String email;
     @Column(name = "mdp")
     private String mdp;
+
+    @OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
+    private List<Utilisateur> utilisateurs=new ArrayList<>();
+
 
     public Compte() {
     }

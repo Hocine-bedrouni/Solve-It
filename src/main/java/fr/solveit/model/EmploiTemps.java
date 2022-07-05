@@ -1,52 +1,57 @@
 package fr.solveit.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-
+import java.util.Date;
+@Entity
+@Table(name="emploiTemps")
 public class EmploiTemps  implements Serializable {
+ /*   @Id
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "administration_num_secu")
     private Administration auteur;
-    private Session session;
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;*/
+    @EmbeddedId
+    EmploiTempsId emploiTempsId;
+
+    @Column
     private String libelle;
-    private Date date_debut_semaine;
+
+    @Temporal(TemporalType.DATE)
     private Date date_fin_semaine;
+    @Temporal(TemporalType.DATE)
     private Date date_edition;
 
     public EmploiTemps() {
     }
 
-    public EmploiTemps(int id, Administration auteur, Session session, String libelle, Date date_debut_semaine, Date date_fin_semaine, Date date_edition) {
-        this.id = id;
-        this.auteur = auteur;
-        this.session = session;
+    public EmploiTemps(Administration auteur, Session session, String libelle, Date date_debut_semaine, Date date_fin_semaine, Date date_edition) {
+
+        this.emploiTempsId.setAuteur(auteur);
+        this.emploiTempsId.setSession(session);
         this.libelle = libelle;
-        this.date_debut_semaine = date_debut_semaine;
+        emploiTempsId.setDateDebutSemaine( date_debut_semaine);
         this.date_fin_semaine = date_fin_semaine;
         this.date_edition = date_edition;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Administration getAuteur() {
-        return auteur;
+        return emploiTempsId.getAuteur();
     }
 
     public void setAuteur(Administration auteur) {
-        this.auteur = auteur;
+        emploiTempsId.setAuteur(auteur);
     }
 
     public Session getSession() {
-        return session;
+        return emploiTempsId.getSession();
     }
 
     public void setSession(Session session) {
-        this.session = session;
+        emploiTempsId.setSession(session);
     }
 
     public String getLibelle() {
@@ -58,11 +63,11 @@ public class EmploiTemps  implements Serializable {
     }
 
     public Date getDate_debut_semaine() {
-        return date_debut_semaine;
+        return emploiTempsId.getDateDebutSemaine();
     }
 
     public void setDate_debut_semaine(Date date_debut_semaine) {
-        this.date_debut_semaine = date_debut_semaine;
+        emploiTempsId.setDateDebutSemaine( date_debut_semaine);
     }
 
     public Date getDate_fin_semaine() {
@@ -84,11 +89,10 @@ public class EmploiTemps  implements Serializable {
     @Override
     public String toString() {
         return "EmploiTemps{" +
-                "id=" + id +
-                ", administration=" + auteur +
-                ", session=" + session +
+                ", administration=" + emploiTempsId.getAuteur() +
+                ", session=" + emploiTempsId.getSession() +
                 ", libelle='" + libelle + '\'' +
-                ", date_debut_semaine=" + date_debut_semaine +
+                ", date_debut_semaine=" + emploiTempsId.getDateDebutSemaine() +
                 ", date_fin_semaine=" + date_fin_semaine +
                 ", date_edition=" + date_edition +
                 '}';

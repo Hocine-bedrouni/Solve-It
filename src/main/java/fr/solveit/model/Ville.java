@@ -1,18 +1,27 @@
 package fr.solveit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "ville")
 public class Ville {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
+    @Column
     private String libelle;
     @ManyToOne
+    @JoinColumn(name="departement_id")
     private Departement departement;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Utilisateur> utilisateursNaissance = new ArrayList<Utilisateur>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Utilisateur> utilisateursResidance= new ArrayList<Utilisateur>();
 
     public Ville() {
     }

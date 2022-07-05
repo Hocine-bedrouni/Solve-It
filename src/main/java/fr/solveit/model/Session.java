@@ -1,16 +1,31 @@
 package fr.solveit.model;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.sql.Date;
 
 @Entity
+@Table(name = "session")
 public class Session {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String libelle;
+    @Column
+    private String libelle ;
+    @Temporal(TemporalType.DATE)
     private Date date_debut;
+    @Temporal(TemporalType.DATE)
     private Date date_fin;
+
+    @OneToMany(mappedBy = "session", fetch = FetchType.LAZY)
+    private List<Stagiaire> utilisateursNaissance = new ArrayList<Stagiaire>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<EmploiTemps> emploiTemps = new ArrayList<EmploiTemps>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Calendrier> calendriers = new ArrayList<Calendrier>();
 
     public Session() {
     }

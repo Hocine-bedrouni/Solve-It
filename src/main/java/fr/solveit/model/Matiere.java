@@ -1,15 +1,24 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Matiere")
 public class Matiere {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "libelle")
     private String libelle;
+
+    @OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
+    List<Formateur> formateurs=new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    List<Calendrier> calendriers=new ArrayList<>();
 
     public Matiere() {
     }
