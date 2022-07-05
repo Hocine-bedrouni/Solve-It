@@ -1,16 +1,41 @@
 package fr.solveit.model;
 
-import java.sql.Date;
-
-public class Utilisateur {
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="typeUtilisateur")
+public abstract class Utilisateur  implements Serializable {
+    /**
+     *  numéro de sécurité social
+     */
+    @Id
+    @Column(name="num_secu")
     private String numSecu;
+    @Column(name="nom")
+
     private String nom;
+    @Column(name="Prenom")
+
     private String prenom;
+    @Column(name="date_naissance")
+
     private Date dateNaissance;
+    @Column(name="adresse")
+
     private String adresse;
+    @Column(name="civilite")
+
     private String civilite;
+    @ManyToOne
+    @JoinColumn(name="Compte_id")
     private Compte compte;
+    @ManyToOne
+    @JoinColumn(name="habitation_ville_id",referencedColumnName="id")
     private Ville villeHabitation;
+    @ManyToOne
+    @JoinColumn(name="naissance_ville_id",referencedColumnName="id")
     private Ville villeNaissance;
 
     public Utilisateur() {
