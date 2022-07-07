@@ -1,46 +1,69 @@
 package fr.solveit.model;
 
-import java.sql.Date;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 import java.sql.Time;
+@Entity
+@Table(name = "calendrier")
 
-public class Calendrier {
+public class Calendrier  implements Serializable {
+  /*  @ManyToOne
+    @JoinColumn(name="matiere_id")
     private Matiere matiere;
-    private Session session;
+    @ManyToOne
+    @JoinColumn(name="session_id")
+    private Session session;*/
+    @EmbeddedId
+    private CalendrierId calendrierId;
+
+    @Column
     private Time heure_debut;
+    @Column
     private Time heure_fin;
+    @Temporal(TemporalType.DATE)
     private Date date;
+   /* @ManyToOne
+    @JoinColumn(name = "formateur_numSecu")
     private Formateur formateur;
+    @ManyToOne
+    @JoinColumn(name="FeuilleEmargement_num")
     private FeuilleEmargement feuilleEmargement;
-    private Administration auteur;
+
+    @ManyToOne
+    @JoinColumn(name = "administration_num_secu")
+    private Administration auteur;*/
+
+
 
     public Calendrier() {
     }
 
     public Calendrier(Matiere matiere, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
-        this.matiere = matiere;
-        this.session = session;
+        calendrierId.setMatiere(matiere);
+        calendrierId.setSession(session);
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
         this.date = date;
-        this.formateur = formateur;
-        this.feuilleEmargement = feuilleEmargement;
-        this.auteur = auteur;
+        calendrierId.setFormateur(formateur);
+        calendrierId.setFeuilleEmargement(feuilleEmargement);
+        calendrierId.setAuteur(auteur);
     }
 
     public Matiere getMatiere() {
-        return matiere;
+        return calendrierId.getMatiere();
     }
 
     public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
+        calendrierId.setMatiere(matiere);
     }
 
     public Session getSession() {
-        return session;
+        return calendrierId.getSession();
     }
 
     public void setSession(Session session) {
-        this.session = session;
+        calendrierId.setSession(session);
     }
 
     public Time getHeure_debut() {
@@ -68,40 +91,40 @@ public class Calendrier {
     }
 
     public Formateur getFormateur() {
-        return formateur;
+        return calendrierId.getFormateur();
     }
 
     public void setFormateur(Formateur formateur) {
-        this.formateur = formateur;
+        calendrierId.setFormateur(formateur);
     }
 
     public FeuilleEmargement getFeuilleEmargement() {
-        return feuilleEmargement;
+        return calendrierId.getFeuilleEmargement();
     }
 
     public void setFeuilleEmargement(FeuilleEmargement feuilleEmargement) {
-        this.feuilleEmargement = feuilleEmargement;
+        calendrierId.setFeuilleEmargement(feuilleEmargement);
     }
 
     public Administration getAuteur() {
-        return auteur;
+        return calendrierId.getAuteur();
     }
 
     public void setAuteur(Administration auteur) {
-        this.auteur = auteur;
+        calendrierId.setAuteur(auteur);
     }
 
     @Override
     public String toString() {
         return "Calendrier{" +
-                "matiere=" + matiere +
-                ", session=" + session +
+                "matiere=" + calendrierId.getMatiere() +
+                ", session=" + calendrierId.getSession() +
                 ", heure_debut=" + heure_debut +
                 ", heure_fin=" + heure_fin +
                 ", date=" + date +
-                ", formateur=" + formateur +
-                ", feuilleEmargement=" + feuilleEmargement +
-                ", administration=" + auteur +
+                ", formateur=" + calendrierId.getFormateur() +
+                ", feuilleEmargement=" + calendrierId.getFeuilleEmargement() +
+                ", administration=" + calendrierId.getAuteur() +
                 '}';
     }
 }
