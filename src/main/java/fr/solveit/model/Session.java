@@ -1,5 +1,6 @@
 package fr.solveit.model;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,10 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "session")
-public class Session {
+public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     private String libelle ;
     @Temporal(TemporalType.DATE)
@@ -30,14 +31,14 @@ public class Session {
     public Session() {
     }
 
-    public Session(int id, String libelle, Date date_debut, Date date_fin) {
+    public Session(Integer id, String libelle, Date date_debut, Date date_fin) {
         this.id = id;
         this.libelle = libelle;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

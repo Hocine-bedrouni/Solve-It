@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;

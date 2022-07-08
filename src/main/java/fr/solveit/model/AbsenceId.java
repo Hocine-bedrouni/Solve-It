@@ -4,6 +4,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
+
 @Embeddable
 public class AbsenceId implements Serializable {
 
@@ -36,5 +38,18 @@ public class AbsenceId implements Serializable {
 
     public void setStagiaire(Stagiaire stagiaire) {
         this.stagiaire = stagiaire;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbsenceId absenceId = (AbsenceId) o;
+        return feuilleEmargement.equals(absenceId.feuilleEmargement) && stagiaire.equals(absenceId.stagiaire);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(feuilleEmargement, stagiaire);
     }
 }
