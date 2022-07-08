@@ -3,7 +3,6 @@ package fr.solveit.model;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @DiscriminatorValue(value = "S")
