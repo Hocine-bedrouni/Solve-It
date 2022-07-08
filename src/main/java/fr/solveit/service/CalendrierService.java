@@ -1,12 +1,8 @@
 package fr.solveit.service;
 
-import fr.solveit.model.Absence;
-import fr.solveit.model.AbsenceId;
 import fr.solveit.model.Calendrier;
 import fr.solveit.model.CalendrierId;
-import fr.solveit.repository.IAbsenceRepo;
 import fr.solveit.repository.ICalendrierRepo;
-import fr.solveit.repository.ICompteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
