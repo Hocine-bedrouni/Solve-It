@@ -10,7 +10,7 @@ import java.util.List;
 public class Compte  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(name = "email")
     private String email;
     @Column(name = "mdp")
@@ -23,17 +23,17 @@ public class Compte  implements Serializable {
     public Compte() {
     }
 
-    public Compte(int id, String email, String mdp) {
+    public Compte(Integer id, String email, String mdp) {
         this.id = id;
         this.email = email;
         this.mdp = mdp;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -50,6 +50,14 @@ public class Calendrier  implements Serializable {
         calendrierId.setAuteur(auteur);
     }
 
+    public CalendrierId getCalendrierId() {
+        return calendrierId;
+    }
+
+    public void setCalendrierId(CalendrierId calendrierId) {
+        this.calendrierId = calendrierId;
+    }
+
     public Matiere getMatiere() {
         return calendrierId.getMatiere();
     }
