@@ -11,8 +11,10 @@ import java.util.List;
 
 @Repository
 public interface IUtilisateurRepo extends JpaRepository<Utilisateur, String> {
+
     @Query("select f from Formateur f")
     List<Formateur> findAllFormateur();
+
 
     @Query("select s from Stagiaire s")
     List<Stagiaire> findAllStagiaire();
