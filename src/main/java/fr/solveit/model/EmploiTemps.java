@@ -38,6 +38,14 @@ public class EmploiTemps  implements Serializable {
         this.date_edition = date_edition;
     }
 
+    public EmploiTempsId getEmploiTempsId() {
+        return emploiTempsId;
+    }
+
+    public void setEmploiTempsId(EmploiTempsId emploiTempsId) {
+        this.emploiTempsId = emploiTempsId;
+    }
+
     public Administration getAuteur() {
         return emploiTempsId.getAuteur();
     }
