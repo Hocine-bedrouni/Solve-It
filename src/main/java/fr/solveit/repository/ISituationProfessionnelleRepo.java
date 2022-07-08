@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ISituationProfessionnelleRepo extends JpaRepository<SituationProrfessionnelle, Integer> {
+
+
 }
