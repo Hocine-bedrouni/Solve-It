@@ -1,13 +1,14 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
 @Table(name = "ville")
-public class Ville {
+public class Ville implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;

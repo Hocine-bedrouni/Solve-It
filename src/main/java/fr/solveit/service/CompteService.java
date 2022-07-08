@@ -40,6 +40,11 @@ public class CompteService {
     }
 
     public Compte delete(Integer id){
+        if (! compteRepo.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "impossible de trouver l'objet à supprimer");
+        }
+
         Compte optcompte = findById(id);
 
         compteRepo.delete(optcompte);

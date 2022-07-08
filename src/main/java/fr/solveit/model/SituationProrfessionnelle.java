@@ -1,12 +1,13 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "situation_prorfessionnelle")
-public class SituationProrfessionnelle {
+public class SituationProrfessionnelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

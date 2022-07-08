@@ -39,10 +39,14 @@ public class AbsenceService {
         if(absenceRepo.existsById(absence.getAbsenceId()))
             return absenceRepo.save(absence);
         else
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,"impossible de trouver le compte a mettre a jour");
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,"impossible de trouver l objet a mettre a jour");
     }
 
     public Absence delete(AbsenceId id){
+        if (! absenceRepo.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "impossible de trouver l'objet à supprimer");
+        }
         Absence optabsence = findById(id);
 
         absenceRepo.delete(optabsence);
