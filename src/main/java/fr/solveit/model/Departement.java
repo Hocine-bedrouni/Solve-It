@@ -1,34 +1,40 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="departement")
 public class Departement {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private String libelle;
     @Column
-    private int num_departement;
+    private Integer num_departement;
     @Column
-    private int code_commune;
+    private Integer code_commune;
 
     @ManyToOne
+    @JoinColumn(name="pays_id")
     private Pays pays;
+
+    @OneToMany(mappedBy = "departement", fetch = FetchType.LAZY)
+    private List<Ville> villes= new ArrayList<>();
 
     public Departement() {
     }
 
-    public Departement(int id, String libelle, int num_departement, int code_commune, Pays pays) {
-        this.id = id;
+    public Departement(String libelle, Integer num_departement, Integer code_commune, Pays pays) {
         this.libelle = libelle;
         this.num_departement = num_departement;
         this.code_commune = code_commune;
         this.pays = pays;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

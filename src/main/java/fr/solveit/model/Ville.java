@@ -1,6 +1,8 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -9,11 +11,17 @@ public class Ville {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "libelle_ID")
+    @Column
     private String libelle;
     @ManyToOne
+    @JoinColumn(name="departement_id")
     private Departement departement;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Utilisateur> utilisateursNaissance = new ArrayList<Utilisateur>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Utilisateur> utilisateursResidance= new ArrayList<Utilisateur>();
 
     public Ville() {
     }

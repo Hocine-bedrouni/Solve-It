@@ -1,76 +1,65 @@
 package fr.solveit.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue(value = "S")
 public class Stagiaire extends Utilisateur{
-    @Id
-    private String  numSecu;
-    @Column
 
+    @Column
     private String diplome;
     @Column
-
-    private List<String> niveau_entree;
+    private String niveau_entree;
     @Column
-
     private boolean difficulte;
     @Column
-
     private boolean handicape;
     @Column
-
     private boolean domtom;
     @Column
-
     private String situation;
     @Column
     private int nbr_travailleur;
     @Column
-
     private boolean enfant;
 
     @Column
     private String logement;
     @Column
-
     private String parent_francais;
     @Column
-
     private boolean rique_perte_logement;
     @Column
-
     private String origine_formation;
     @Column
-
     private String transport;
     @Column
-
     private String allocation;
     @Column
-
+    private Blob signature;
+    @ManyToOne
+    @JoinColumn(name="session_id")
     private Session session;
 
-
+    @ManyToOne
+    @JoinColumn(name="hebergement_id")
     private Hebergement hebergement;
 
+    @ManyToOne
+    @JoinColumn(name="situation_professionnelle_id")
     private SituationProrfessionnelle situationProfessionnelle;
-    @Column
 
-    private Blob signature;
 
     public Stagiaire() {
         super();
     }
 
-    public Stagiaire(String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville villeNaissance, String numSecu, String diplome, List<String> niveau_entree, boolean difficulte, boolean handicape, boolean domtom, String situation, int nbr_travailleur, boolean enfant, String logement, String parent_francais, boolean rique_perte_logement, String origine_formation, String transport, String allocation, Session session, Hebergement hebergement, SituationProrfessionnelle situationProfessionnelle, Blob signature) {
+    public Stagiaire(String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville villeNaissance, String numSecu, String diplome, String niveau_entree, boolean difficulte, boolean handicape, boolean domtom, String situation, int nbr_travailleur, boolean enfant, String logement, String parent_francais, boolean rique_perte_logement, String origine_formation, String transport, String allocation, Session session, Hebergement hebergement, SituationProrfessionnelle situationProfessionnelle, Blob signature) {
         super(numSecu, nom, prenom, dateNaissance, adresse, civilite, compte, villeHabitation, villeNaissance);
-        this.numSecu = numSecu;
+
         this.diplome = diplome;
         this.niveau_entree = niveau_entree;
         this.difficulte = difficulte;
@@ -92,11 +81,11 @@ public class Stagiaire extends Utilisateur{
     }
 
     public String getNumSecu() {
-        return numSecu;
+        return super.getNumSecu();
     }
 
     public void setNumSecu(String numSecu) {
-        this.numSecu = numSecu;
+        super.setNumSecu(numSecu);
     }
 
     public String getDiplome() {
@@ -107,11 +96,11 @@ public class Stagiaire extends Utilisateur{
         this.diplome = diplome;
     }
 
-    public List<String> getNiveau_entree() {
+    public String getNiveau_entree() {
         return niveau_entree;
     }
 
-    public void setNiveau_entree(List<String> niveau_entree) {
+    public void setNiveau_entree(String niveau_entree) {
         this.niveau_entree = niveau_entree;
     }
 
@@ -246,7 +235,7 @@ public class Stagiaire extends Utilisateur{
     @Override
     public String toString() {
         return "Stagiaire{" +
-                "numSecu='" + numSecu + '\'' +
+                "numSecu='" + super.getNumSecu() + '\'' +
                 ", diplome='" + diplome + '\'' +
                 ", niveau_entree=" + niveau_entree +
                 ", difficulte=" + difficulte +

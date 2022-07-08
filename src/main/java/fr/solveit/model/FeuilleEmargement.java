@@ -2,7 +2,10 @@ package fr.solveit.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="feuille_emargement")
 public class FeuilleEmargement  implements Serializable {
@@ -18,6 +21,12 @@ public class FeuilleEmargement  implements Serializable {
     private Date date_debut_formation;
     @Temporal(TemporalType.DATE)
     private Date date_fin_formation;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Absence> absences = new ArrayList<Absence>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Calendrier> calendriers = new ArrayList<Calendrier>();
 
     public FeuilleEmargement() {
     }

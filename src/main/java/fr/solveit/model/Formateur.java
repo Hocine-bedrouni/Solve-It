@@ -3,38 +3,39 @@ package fr.solveit.model;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="Formateur")
+@DiscriminatorValue(value = "f")
 public class Formateur extends Utilisateur implements Serializable {
-    @Id
-    @Column(name="num_secu")
-    private String numSecu;
+
     @ManyToOne
     @JoinColumn (name="Matiere_id")
     private Matiere matiere;
 
-    @ManyToOne
-    @JoinColumn (name="Matiere_session_id")
-    private Session session;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Calendrier> calendriers = new ArrayList<Calendrier>();
+
 
     public Formateur() {
         super();
     }
 
-    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance,  Matiere matiere,Session session) {
+    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance,  Matiere matiere) {
         super(numSecu, nom, prenom, dateNaissance, adresse, civilite, compte, villeHabitation, naissance);
-        this.numSecu = numSecu;
+        super.setNumSecu(numSecu);
         this.matiere = matiere;
-        this.session=session;
     }
 
     public String getNumSecu() {
-        return numSecu;
+        return super.getNumSecu();
     }
 
     public void setNumSecu(String numSecu) {
-        this.numSecu = numSecu;
+        super.setNumSecu(numSecu);
     }
 
     public Matiere getMatiere() {
@@ -45,20 +46,13 @@ public class Formateur extends Utilisateur implements Serializable {
         this.matiere = matiere;
     }
 
-    public Session getSession() {
-        return session;
-    }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
 
     @Override
     public String toString() {
         return "Formateur{" +
-                "num_secu='" + numSecu + '\'' +
+                "num_secu='" + super.getNumSecu() + '\'' +
                 "matiere='" + matiere + '\'' +
-                ", session=" + session +
                 '}'+ super.toString();
     }
 

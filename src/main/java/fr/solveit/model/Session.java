@@ -1,6 +1,8 @@
 package fr.solveit.model;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -15,6 +17,15 @@ public class Session {
     private Date date_debut;
     @Temporal(TemporalType.DATE)
     private Date date_fin;
+
+    @OneToMany(mappedBy = "session", fetch = FetchType.LAZY)
+    private List<Stagiaire> utilisateursNaissance = new ArrayList<Stagiaire>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<EmploiTemps> emploiTemps = new ArrayList<EmploiTemps>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Calendrier> calendriers = new ArrayList<Calendrier>();
 
     public Session() {
     }
