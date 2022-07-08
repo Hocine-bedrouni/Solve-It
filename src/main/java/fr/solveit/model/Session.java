@@ -11,7 +11,7 @@ import java.util.List;
 public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     private String libelle ;
     @Temporal(TemporalType.DATE)
@@ -31,14 +31,14 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Session(int id, String libelle, Date date_debut, Date date_fin) {
+    public Session(Integer id, String libelle, Date date_debut, Date date_fin) {
         this.id = id;
         this.libelle = libelle;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

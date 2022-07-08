@@ -10,7 +10,7 @@ import java.util.List;
 public class SituationProrfessionnelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     private boolean salarie;
     @Column
@@ -24,18 +24,18 @@ public class SituationProrfessionnelle implements Serializable {
     public SituationProrfessionnelle() {
     }
 
-    public SituationProrfessionnelle(int id, boolean salarie, boolean demandeur_emploi, boolean inscription_pole_emploi) {
+    public SituationProrfessionnelle(Integer id, boolean salarie, boolean demandeur_emploi, boolean inscription_pole_emploi) {
         this.id = id;
         this.salarie = salarie;
         this.demandeur_emploi = demandeur_emploi;
         this.inscription_pole_emploi = inscription_pole_emploi;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
