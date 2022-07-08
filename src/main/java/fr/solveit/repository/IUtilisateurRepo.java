@@ -13,7 +13,8 @@ import java.util.List;
 public interface IUtilisateurRepo extends JpaRepository<Utilisateur, String> {
 
     @Query("select f from Formateur f")
-    List<Formateur> findFormateur();
+    List<Formateur> findAllFormateur();
+
 
     @Query("select s from Stagiaire s")
     List<Stagiaire> findAllStagiaire();

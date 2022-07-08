@@ -1,16 +1,17 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
 @Table(name = "ville")
-public class Ville {
+public class Ville implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int id;
+    private Integer id;
     @Column
     private String libelle;
     @ManyToOne
@@ -26,13 +27,13 @@ public class Ville {
     public Ville() {
     }
 
-    public Ville(int id, String libelle, Departement departement) {
+    public Ville(Integer id, String libelle, Departement departement) {
         this.id = id;
         this.libelle = libelle;
         this.departement = departement;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

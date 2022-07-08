@@ -1,15 +1,16 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "situation_prorfessionnelle")
-public class SituationProrfessionnelle {
+public class SituationProrfessionnelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     private boolean salarie;
     @Column
@@ -23,18 +24,18 @@ public class SituationProrfessionnelle {
     public SituationProrfessionnelle() {
     }
 
-    public SituationProrfessionnelle(int id, boolean salarie, boolean demandeur_emploi, boolean inscription_pole_emploi) {
+    public SituationProrfessionnelle(Integer id, boolean salarie, boolean demandeur_emploi, boolean inscription_pole_emploi) {
         this.id = id;
         this.salarie = salarie;
         this.demandeur_emploi = demandeur_emploi;
         this.inscription_pole_emploi = inscription_pole_emploi;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

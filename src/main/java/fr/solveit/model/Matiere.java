@@ -1,16 +1,17 @@
 package fr.solveit.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="Matiere")
-public class Matiere {
+public class Matiere implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(name = "libelle")
     private String libelle;
 
@@ -23,7 +24,7 @@ public class Matiere {
     public Matiere() {
     }
 
-    public Matiere(int id, String libelle) {
+    public Matiere(Integer id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -32,7 +33,7 @@ public class Matiere {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

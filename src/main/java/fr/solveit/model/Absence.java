@@ -34,6 +34,22 @@ public class Absence  implements Serializable {
         this.absence_justifie = absenceJustifie;
     }
 
+    public AbsenceId getAbsenceId() {
+        return absenceId;
+    }
+
+    public void setAbsenceId(AbsenceId absenceId) {
+        this.absenceId = absenceId;
+    }
+
+    public boolean isAbsence_justifie() {
+        return absence_justifie;
+    }
+
+    public void setAbsence_justifie(boolean absence_justifie) {
+        this.absence_justifie = absence_justifie;
+    }
+
     public FeuilleEmargement getFeuilleEmergement() {
         return absenceId.getFeuilleEmargement();
     }
