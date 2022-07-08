@@ -1,27 +1,41 @@
 package fr.solveit.model;
 
-import java.sql.Date;
+import javax.persistence.*;
 
-public class Formateur extends Utilisateur {
-    private String numSecu;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name="Formateur")
+@DiscriminatorValue(value = "f")
+public class Formateur extends Utilisateur implements Serializable {
+
+    @ManyToOne
+    @JoinColumn (name="Matiere_id")
     private Matiere matiere;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Calendrier> calendriers = new ArrayList<Calendrier>();
+
 
     public Formateur() {
         super();
     }
 
-    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance, String numSecu1, Matiere matiere) {
+    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance,  Matiere matiere) {
         super(numSecu, nom, prenom, dateNaissance, adresse, civilite, compte, villeHabitation, naissance);
-        this.numSecu = numSecu1;
+        super.setNumSecu(numSecu);
         this.matiere = matiere;
     }
 
     public String getNumSecu() {
-        return numSecu;
+        return super.getNumSecu();
     }
 
     public void setNumSecu(String numSecu) {
-        this.numSecu = numSecu;
+        super.setNumSecu(numSecu);
     }
 
     public Matiere getMatiere() {
@@ -32,11 +46,13 @@ public class Formateur extends Utilisateur {
         this.matiere = matiere;
     }
 
+
+
     @Override
     public String toString() {
         return "Formateur{" +
-                "num_secu='" + numSecu + '\'' +
-                ", matiere=" + matiere +
+                "num_secu='" + super.getNumSecu() + '\'' +
+                "matiere='" + matiere + '\'' +
                 '}'+ super.toString();
     }
 
