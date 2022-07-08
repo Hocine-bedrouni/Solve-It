@@ -33,7 +33,7 @@ public class AbsenceController {
     public List<Absence> findByStagiaire(@PathVariable String numSec) {
         return absenceService.findByStagiaire(numSec);
     }
-    
+
     @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Absence create(@RequestBody Absence absence) {
