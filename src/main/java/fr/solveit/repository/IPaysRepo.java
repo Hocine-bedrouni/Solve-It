@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPaysRepo extends JpaRepository<Pays, Integer> {
+    public Pays findByLibelle(String libelle);
 }
