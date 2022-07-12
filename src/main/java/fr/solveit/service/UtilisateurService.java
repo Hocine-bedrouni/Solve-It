@@ -19,6 +19,7 @@ import java.util.Optional;
 @Service
 public class UtilisateurService {
 
+
     @Autowired
     private IUtilisateurRepo utilisateurRepo;
 
@@ -70,4 +71,5 @@ public class UtilisateurService {
         utilisateurRepo.delete(optutilisateur);
         return optutilisateur;
     }
+
 }
