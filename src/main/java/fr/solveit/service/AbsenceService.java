@@ -3,9 +3,10 @@ package fr.solveit.service;
 
 import fr.solveit.model.Absence;
 import fr.solveit.model.AbsenceId;
+import fr.solveit.model.Stagiaire;
 import fr.solveit.repository.IAbsenceRepo;
-import fr.solveit.repository.ICompteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,7 +22,9 @@ public class AbsenceService {
     public List<Absence> findAll(){
         return absenceRepo.findAll();
     }
-
+    public List<Absence> findByStagiaire( String numSecu){
+        return findByStagiaire(numSecu);
+    }
     public Absence findById(AbsenceId id){
         Optional<Absence> optabsence = absenceRepo.findById(id);
         if(optabsence.isPresent())
