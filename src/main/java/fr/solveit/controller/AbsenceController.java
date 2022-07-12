@@ -2,8 +2,7 @@ package fr.solveit.controller;
 
 import fr.solveit.model.Absence;
 import fr.solveit.model.AbsenceId;
-import fr.solveit.model.Calendrier;
-import fr.solveit.model.CalendrierId;
+
 import fr.solveit.service.AbsenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
