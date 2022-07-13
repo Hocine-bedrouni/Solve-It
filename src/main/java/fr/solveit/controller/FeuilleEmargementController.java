@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/feuilleemargements")
 public class FeuilleEmargementController {
     @Autowired
