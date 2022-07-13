@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/utilisateurs")
 public class UtlisateurController {
     @Autowired
