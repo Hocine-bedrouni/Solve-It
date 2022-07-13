@@ -1,6 +1,7 @@
 package fr.solveit.service;
 
 import fr.solveit.model.Pays;
+import fr.solveit.model.Ville;
 import fr.solveit.repository.IPaysRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -78,8 +79,18 @@ public class PaysService {
             throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED,
                     "erreur lors de la suppressiion de le Pays");
         }
-
         return paysDel;
+    }
+
+
+    public Pays findByLibelle(String libelle) {
+        Pays optPays = this.iPaysRepo.findByLibelle(libelle);
+        if (optPays != null ){
+            return optPays;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
     }
 }
 

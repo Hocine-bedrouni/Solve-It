@@ -2,6 +2,7 @@ package fr.solveit.service;
 
 
 
+import fr.solveit.model.Departement;
 import fr.solveit.model.Ville;
 import fr.solveit.repository.IVilleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,5 +82,14 @@ public class VilleService {
         }
 
         return villeDel;
+    }
+
+    public Ville findByLibelle(String libelle) {
+        Ville optVille = this.iVilleRepo.findByLibelle(libelle);
+        if (optVille != null ){
+            return optVille;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 }
