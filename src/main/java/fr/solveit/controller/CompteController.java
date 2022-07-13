@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/comptes")
 public class CompteController {
     @Autowired

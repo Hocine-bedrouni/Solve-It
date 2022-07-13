@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/situation")
 public class SituationProfessionnelleController {
 
