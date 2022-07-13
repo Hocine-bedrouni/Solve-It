@@ -11,7 +11,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin("http://localhost:4200")
+@RequestMapping("/session")
 
 public class SessionController {
 
