@@ -3,6 +3,7 @@ package fr.solveit.config;
 
 import fr.solveit.model.*;
 import fr.solveit.repository.*;
+import fr.solveit.service.CompteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,12 @@ public class LoadDatabase {
 
 	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+	@Autowired
+	CompteService compteService;
 @Bean
 	CommandLineRunner initDatabase(IUtilisateurRepo user) {
 	return args -> {
-		System.out.println("test");
+		System.out.println("test"+compteService.findAll());
 	};
 
 	}

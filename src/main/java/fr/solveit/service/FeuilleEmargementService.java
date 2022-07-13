@@ -30,8 +30,8 @@ public class FeuilleEmargementService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
-    public List<FeuilleEmargement> findAllByDate_debut_formation(Date date){
-        FeuilleEmargement optFeuilleEmargement = (FeuilleEmargement) feuilleEmargementRepo.findAllByDate_debut_formation(date);
+    public List<FeuilleEmargement> findAllByDateDebutFormation(java.sql.Date date){
+        FeuilleEmargement optFeuilleEmargement = (FeuilleEmargement) feuilleEmargementRepo.findAllByDateDebutFormation(date);
         if(optFeuilleEmargement != null )
             return (List<FeuilleEmargement>) optFeuilleEmargement;
         else
