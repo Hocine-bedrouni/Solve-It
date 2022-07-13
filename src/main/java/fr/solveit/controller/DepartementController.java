@@ -1,5 +1,6 @@
 package fr.solveit.controller;
 
+
 import fr.solveit.model.Departement;
 import fr.solveit.service.DepartementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+
+@RestController
+@CrossOrigin("http://localhost:4200")
+@RequestMapping("/Departement")
 public class DepartementController {
+
 
     @Autowired
     private DepartementService departementService;
@@ -30,7 +36,9 @@ public class DepartementController {
     @GetMapping("/libelle/{libelle}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Departement> findBylibelle(@PathVariable String libelle) {
-        return (List<Departement>) this.departementService.findByLibelle(libelle);
+
+        return this.departementService.findBylibelle(libelle);
+
     }
 
 

@@ -82,6 +82,7 @@ public class PaysService {
         return paysDel;
     }
 
+
     public Pays findByLibelle(String libelle) {
         Pays optPays = this.iPaysRepo.findByLibelle(libelle);
         if (optPays != null ){
@@ -89,6 +90,7 @@ public class PaysService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+
     }
 }
 
