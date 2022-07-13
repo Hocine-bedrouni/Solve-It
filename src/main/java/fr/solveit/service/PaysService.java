@@ -1,6 +1,7 @@
 package fr.solveit.service;
 
 import fr.solveit.model.Pays;
+import fr.solveit.model.Ville;
 import fr.solveit.repository.IPaysRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,6 +81,10 @@ public class PaysService {
         }
 
         return paysDel;
+    }
+
+    public List<Pays> findBylibelle(String libelle) {
+        return (List<Pays>) this.iPaysRepo.findByLibelle(libelle);
     }
 }
 

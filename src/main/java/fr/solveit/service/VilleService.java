@@ -82,4 +82,8 @@ public class VilleService {
 
         return villeDel;
     }
+
+    public List<Ville> findBylibelle(String libelle) {
+        return (List<Ville>) this.iVilleRepo.findByLibelle(libelle);
+    }
 }

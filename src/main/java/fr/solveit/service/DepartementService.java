@@ -1,6 +1,7 @@
 package fr.solveit.service;
 
 import fr.solveit.model.Departement;
+import fr.solveit.model.Ville;
 import fr.solveit.repository.IDepartementRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,5 +82,9 @@ public class DepartementService {
         }
 
         return departementDel;
+    }
+
+    public List<Departement> findBylibelle(String libelle) {
+        return (List<Departement>) this.iDepartementRepo.findByLibelle(libelle);
     }
 }
