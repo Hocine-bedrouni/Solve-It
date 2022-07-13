@@ -81,6 +81,9 @@ public class PaysService {
 
         return paysDel;
     }
+    public List<Pays> findBylibelle(String libelle) {
+        return (List<Pays>) this.iPaysRepo.findByLibelle(libelle);
+    }
 }
 
 

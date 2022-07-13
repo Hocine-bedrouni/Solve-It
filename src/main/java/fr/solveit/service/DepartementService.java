@@ -82,4 +82,7 @@ public class DepartementService {
 
         return departementDel;
     }
+    public List<Departement> findBylibelle(String libelle) {
+        return (List<Departement>) this.iDepartementRepo.findByLibelle(libelle);
+    }
 }
