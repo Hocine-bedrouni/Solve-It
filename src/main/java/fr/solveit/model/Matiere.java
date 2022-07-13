@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="Matiere")
-public class Matiere {
+@Table(name="Session")
+public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,16 +14,16 @@ public class Matiere {
     @Column(name = "libelle")
     private String libelle;
 
-    @OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "Session", fetch = FetchType.LAZY)
     List<Formateur> formateurs=new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY)
     List<Calendrier> calendriers=new ArrayList<>();
 
-    public Matiere() {
+    public Session() {
     }
 
-    public Matiere(int id, String libelle) {
+    public Session(int id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -46,7 +46,7 @@ public class Matiere {
 
     @Override
     public String toString() {
-        return "Matiere{" +
+        return "Session{" +
                 "id=" + id +
                 ", libelle='" + libelle + '\'' +
                 '}';

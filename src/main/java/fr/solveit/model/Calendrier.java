@@ -9,8 +9,8 @@ import java.sql.Time;
 
 public class Calendrier  implements Serializable {
   /*  @ManyToOne
-    @JoinColumn(name="matiere_id")
-    private Matiere matiere;
+    @JoinColumn(name="Session_id")
+    private Session Session;
     @ManyToOne
     @JoinColumn(name="session_id")
     private Session session;*/
@@ -39,8 +39,8 @@ public class Calendrier  implements Serializable {
     public Calendrier() {
     }
 
-    public Calendrier(Matiere matiere, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
-        calendrierId.setMatiere(matiere);
+    public Calendrier(Session Session, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
+        calendrierId.setSession(Session);
         calendrierId.setSession(session);
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
@@ -50,12 +50,12 @@ public class Calendrier  implements Serializable {
         calendrierId.setAuteur(auteur);
     }
 
-    public Matiere getMatiere() {
-        return calendrierId.getMatiere();
+    public Session getSession() {
+        return calendrierId.getSession();
     }
 
-    public void setMatiere(Matiere matiere) {
-        calendrierId.setMatiere(matiere);
+    public void setSession(Session Session) {
+        calendrierId.setSession(Session);
     }
 
     public Session getSession() {
@@ -117,7 +117,7 @@ public class Calendrier  implements Serializable {
     @Override
     public String toString() {
         return "Calendrier{" +
-                "matiere=" + calendrierId.getMatiere() +
+                "Session=" + calendrierId.getSession() +
                 ", session=" + calendrierId.getSession() +
                 ", heure_debut=" + heure_debut +
                 ", heure_fin=" + heure_fin +
