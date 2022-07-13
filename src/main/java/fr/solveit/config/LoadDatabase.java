@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.repository.query.Param;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,13 @@ public class LoadDatabase {
 
 	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+@Bean
+	CommandLineRunner initDatabase(IUtilisateurRepo user) {
+	return args -> {
+		System.out.println("test");
+	};
+
+	}
 /*	@Autowired
 	IMatiereRepo matiereRepo;
 	@Autowired
