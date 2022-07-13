@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IDepartementRepo extends JpaRepository<Departement, Integer> {
+    public Departement findByLibelle(String libelle);
 }

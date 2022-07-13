@@ -4,6 +4,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class CalendrierId implements Serializable {
@@ -74,6 +75,19 @@ public class CalendrierId implements Serializable {
 
     public void setAuteur(Administration auteur) {
         this.auteur = auteur;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CalendrierId that = (CalendrierId) o;
+        return matiere.equals(that.matiere) && session.equals(that.session) && formateur.equals(that.formateur) && feuilleEmargement.equals(that.feuilleEmargement) && auteur.equals(that.auteur);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(matiere, session, formateur, feuilleEmargement, auteur);
     }
 
     @Override

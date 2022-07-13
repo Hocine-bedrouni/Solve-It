@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IVilleRepo extends JpaRepository<Ville, Integer> {
+    public Ville findByLibelle(String libelle);
 }
