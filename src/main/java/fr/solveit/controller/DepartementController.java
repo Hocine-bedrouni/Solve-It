@@ -10,10 +10,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+
 @RestController
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/Departement")
 public class DepartementController {
+
+
     @Autowired
     private DepartementService departementService;
 
@@ -33,7 +36,9 @@ public class DepartementController {
     @GetMapping("/libelle/{libelle}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Departement> findBylibelle(@PathVariable String libelle) {
+
         return this.departementService.findBylibelle(libelle);
+
     }
 
 
@@ -58,6 +63,5 @@ public class DepartementController {
     public Departement delete (@PathVariable Integer id) {
         return this.departementService.delete(id);
     }
-
 
 }
