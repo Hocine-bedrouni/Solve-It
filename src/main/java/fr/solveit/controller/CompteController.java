@@ -10,14 +10,17 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/comptes")
 public class CompteController {
     @Autowired
     private CompteService compteService;
 
-    @GetMapping("")
+    @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public List<Compte> findAll() {return compteService.findAll();}
+    public List<Compte> findAll() {
+        System.out.println("------> ok");
+        return compteService.findAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(code= HttpStatus.OK)
@@ -25,7 +28,7 @@ public class CompteController {
         return compteService.findById(id);
     }
 
-    @PostMapping("")
+    @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Compte create(@RequestBody Compte compte) {
         return compteService.create(compte);
