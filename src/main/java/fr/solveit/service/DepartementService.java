@@ -1,11 +1,16 @@
 package fr.solveit.service;
 
 import fr.solveit.model.Departement;
+import fr.solveit.model.Stagiaire;
 import fr.solveit.repository.IDepartementRepo;
+import fr.solveit.repository.IUtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.sql.Date;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +42,25 @@ public class DepartementService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
+
+
+    public Departement findByLibelle(String libelle) {
+        Departement optDepartement = this.iDepartementRepo.findByLibelle(libelle);
+    if (optDepartement != null ){
+                return optDepartement;
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+    }
+
+//    public List<Departement> findByLibelle(String libelle){
+//        List<Departement> optDepartement = iDepartementRepo.findByLibelle(libelle);
+//        if(optDepartement != null)
+//            return optDepartement;
+//        else
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//    }
+
 
 
 
@@ -82,7 +106,5 @@ public class DepartementService {
 
         return departementDel;
     }
-    public List<Departement> findBylibelle(String libelle) {
-        return (List<Departement>) this.iDepartementRepo.findByLibelle(libelle);
-    }
+
 }
