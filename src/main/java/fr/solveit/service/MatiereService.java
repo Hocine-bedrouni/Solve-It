@@ -1,7 +1,7 @@
 package fr.solveit.service;
 
-import fr.solveit.model.Matiere;
-import fr.solveit.repository.IMatiereRepo;
+import fr.solveit.model.Session;
+import fr.solveit.repository.ISessionRepo;
 import fr.solveit.repository.IVilleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,25 +14,25 @@ import java.util.Optional;
 @Service
 public class MatiereService {
     @Autowired
-    private IMatiereRepo iMatiereRepo;
+    private ISessionRepo iSessionRepo;
 
     /**
-     * methode qui recupere du Repo les Matieres
-     * @return List<Matiere>
+     * methode qui recupere du Repo les Sessions
+     * @return List<Session>
      */
-    public List<Matiere> findAll(){
-        return this.iMatiereRepo.findAll();
+    public List<Session> findAll(){
+        return this.iSessionRepo.findAll();
     }
 
     /**
-     * methode qui permet de recuperer une Matiere par son id
-     * @param id Long, id de la Matiere recherchée
-     * @return Matiere
+     * methode qui permet de recuperer une Session par son id
+     * @param id Long, id de la Session recherchée
+     * @return Session
      */
-    public Matiere findById(Integer id) {
-        Optional<Matiere> optMatiere = this.iMatiereRepo.findById(id);
-        if (optMatiere.isPresent()) {
-            return optMatiere.get();
+    public Session findById(Integer id) {
+        Optional<Session> optSession = this.iSessionRepo.findById(id);
+        if (optSession.isPresent()) {
+            return optSession.get();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -41,46 +41,46 @@ public class MatiereService {
 
 
     /**
-     * methode qui permet d'enregistrer une Matiere
-     * @param newMatiere Matiere, la Matiere a enregistrée
-     * @return Matiere, la Matiere enregistrée avec son id
+     * methode qui permet d'enregistrer une Session
+     * @param newSession Session, la Session a enregistrée
+     * @return Session, la Session enregistrée avec son id
      */
-    public Matiere create(Matiere newMatiere) {
-        return this.iMatiereRepo.save(newMatiere);
+    public Session create(Session newSession) {
+        return this.iSessionRepo.save(newSession);
     }
 
     /**
-     * methode qui met a jour une Matiere dans ma bdd
-     * @param matiere Matiere, la Matiere a mettre à jour
-     * @return Matiere, la Matiere mise à jour
+     * methode qui met a jour une Session dans ma bdd
+     * @param Session Session, la Session a mettre à jour
+     * @return Session, la Session mise à jour
      */
-    public Matiere update(Matiere matiere) {
-        if (! this.iMatiereRepo.existsById(matiere.getId())) {
+    public Session update(Session Session) {
+        if (! this.iSessionRepo.existsById(Session.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,
-                    "impossible de trouver la Matiere a mettre à jour");
+                    "impossible de trouver la Session a mettre à jour");
         }
-        return this.iMatiereRepo.save(matiere);
+        return this.iSessionRepo.save(Session);
     }
 
     /**
-     * methode qui supprime une Matiere de la bdd si elle y est
+     * methode qui supprime une Session de la bdd si elle y est
      * puis verifie si elle a bien été supprimée
-     * @param id Long, id de la Matiere à supprimer
-     * @return Matiere
+     * @param id Long, id de la Session à supprimer
+     * @return Session
      */
-    public Matiere delete (Integer id) {
-        if (! this.iMatiereRepo.existsById(id)) {
+    public Session delete (Integer id) {
+        if (! this.iSessionRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    "impossible de trouver la Matiere à supprimer");
+                    "impossible de trouver la Session à supprimer");
         }
-        Matiere matiereDel = this.findById(id);
-        this.iMatiereRepo.deleteById(id);
-        if (this.iMatiereRepo.existsById(id)) {
+        Session SessionDel = this.findById(id);
+        this.iSessionRepo.deleteById(id);
+        if (this.iSessionRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED,
-                    "erreur lors de la suppressiion de la Matiere");
+                    "erreur lors de la suppressiion de la Session");
         }
 
-        return matiereDel;
+        return SessionDel;
     }
 
 

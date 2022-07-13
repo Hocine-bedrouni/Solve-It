@@ -30,7 +30,7 @@ public class LoadDatabase {
 
 	}
 /*	@Autowired
-	IMatiereRepo matiereRepo;
+	ISessionRepo SessionRepo;
 	@Autowired
 	IVilleRepo villeRepo;
 
@@ -58,10 +58,10 @@ public class LoadDatabase {
 	}
 
 	@Bean
-	public Matiere trouverMatiere(){
-		Matiere matiere;
-		matiere = matiereRepo.findById(3).get();
-		return matiere;
+	public Session trouverSession(){
+		Session Session;
+		Session = SessionRepo.findById(3).get();
+		return Session;
 	}
 
 	@Bean
@@ -76,10 +76,10 @@ public class LoadDatabase {
 		formateur.setCompte(trouverCompte());
 		formateur.setVilleHabitation(trouverVille());
 		formateur.setVilleNaissance(trouverVillenaissance());
-		formateur.setMatiere(trouverMatiere());*/
+		formateur.setSession(trouverSession());*/
 /*
 		return args -> {
-			log.info("loading data " + utilisateurRepo.save(new Formateur("179115900100313","Richardson","Isaac",Date.valueOf("1990-01-30"),"6889 Nibh Street","Mme",trouverCompte(),trouverVille(),trouverVillenaissance(),trouverMatiere())));
+			log.info("loading data " + utilisateurRepo.save(new Formateur("179115900100313","Richardson","Isaac",Date.valueOf("1990-01-30"),"6889 Nibh Street","Mme",trouverCompte(),trouverVille(),trouverVillenaissance(),trouverSession())));
 
 		};
 	}

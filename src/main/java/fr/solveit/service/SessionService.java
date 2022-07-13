@@ -1,8 +1,8 @@
 package fr.solveit.service;
 
-import fr.solveit.model.Matiere;
 import fr.solveit.model.Session;
-import fr.solveit.repository.IMatiereRepo;
+import fr.solveit.model.Session;
+import fr.solveit.repository.ISessionRepo;
 import fr.solveit.repository.ISessionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,9 +30,9 @@ public class SessionService {
      * @return Session
      */
     public Session findById(Integer id) {
-        Optional<Session> optMatiere = this.iSessionRepo.findById(id);
-        if (optMatiere.isPresent()) {
-            return optMatiere.get();
+        Optional<Session> optSession = this.iSessionRepo.findById(id);
+        if (optSession.isPresent()) {
+            return optSession.get();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

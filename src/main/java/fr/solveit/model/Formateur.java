@@ -13,8 +13,8 @@ import java.util.List;
 public class Formateur extends Utilisateur implements Serializable {
 
     @ManyToOne
-    @JoinColumn (name="Matiere_id")
-    private Matiere matiere;
+    @JoinColumn (name="Session_id")
+    private Session Session;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Calendrier> calendriers = new ArrayList<Calendrier>();
@@ -24,10 +24,10 @@ public class Formateur extends Utilisateur implements Serializable {
         super();
     }
 
-    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance,  Matiere matiere) {
+    public Formateur(String numSecu, String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville naissance,  Session Session) {
         super(numSecu, nom, prenom, dateNaissance, adresse, civilite, compte, villeHabitation, naissance);
         super.setNumSecu(numSecu);
-        this.matiere = matiere;
+        this.Session = Session;
     }
 
     public String getNumSecu() {
@@ -38,12 +38,12 @@ public class Formateur extends Utilisateur implements Serializable {
         super.setNumSecu(numSecu);
     }
 
-    public Matiere getMatiere() {
-        return matiere;
+    public Session getSession() {
+        return Session;
     }
 
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
+    public void setSession(Session Session) {
+        this.Session = Session;
     }
 
 
@@ -52,7 +52,7 @@ public class Formateur extends Utilisateur implements Serializable {
     public String toString() {
         return "Formateur{" +
                 "num_secu='" + super.getNumSecu() + '\'' +
-                "matiere='" + matiere + '\'' +
+                "Session='" + Session + '\'' +
                 '}'+ super.toString();
     }
 

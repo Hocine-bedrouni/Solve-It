@@ -10,8 +10,8 @@ import java.util.Objects;
 public class CalendrierId implements Serializable {
     private static final long serialVersionUID = -7657830460147523710L;
     @ManyToOne
-    @JoinColumn(name="matiere_id")
-    private Matiere matiere;
+    @JoinColumn(name="Session_id")
+    private Session Session;
     @ManyToOne
     @JoinColumn(name="session_id")
     private Session session;
@@ -29,20 +29,20 @@ public class CalendrierId implements Serializable {
     public CalendrierId() {
     }
 
-    public CalendrierId(Matiere matiere, Session session, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
-        this.matiere = matiere;
+    public CalendrierId(Session Session, Session session, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
+        this.Session = Session;
         this.session = session;
         this.formateur = formateur;
         this.feuilleEmargement = feuilleEmargement;
         this.auteur = auteur;
     }
 
-    public Matiere getMatiere() {
-        return matiere;
+    public Session getSession() {
+        return Session;
     }
 
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
+    public void setSession(Session Session) {
+        this.Session = Session;
     }
 
     public Session getSession() {
@@ -93,7 +93,7 @@ public class CalendrierId implements Serializable {
     @Override
     public String toString() {
         return "CalendrierId{" +
-                "matiere=" + matiere +
+                "Session=" + Session +
                 ", session=" + session +
                 ", formateur=" + formateur +
                 ", feuilleEmargement=" + feuilleEmargement +
