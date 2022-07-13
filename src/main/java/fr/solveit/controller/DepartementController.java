@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/Departement")
 public class DepartementController {
 
-
     @Autowired
     private DepartementService departementService;
 
@@ -37,7 +36,9 @@ public class DepartementController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Departement> findBylibelle(@PathVariable String libelle) {
 
+
         return this.departementService.findBylibelle(libelle);
+
 
     }
 
@@ -63,5 +64,6 @@ public class DepartementController {
     public Departement delete (@PathVariable Integer id) {
         return this.departementService.delete(id);
     }
+
 
 }

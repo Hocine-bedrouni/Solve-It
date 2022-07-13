@@ -84,6 +84,7 @@ public class VilleService {
         return villeDel;
     }
 
+
     public Ville findByLibelle(String libelle) {
         Ville optVille = this.iVilleRepo.findByLibelle(libelle);
         if (optVille != null ){
@@ -91,5 +92,6 @@ public class VilleService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+
     }
 }

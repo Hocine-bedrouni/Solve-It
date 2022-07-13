@@ -1,7 +1,9 @@
 package fr.solveit.service;
 
 import fr.solveit.model.Departement;
+
 import fr.solveit.model.Stagiaire;
+
 import fr.solveit.repository.IDepartementRepo;
 import fr.solveit.repository.IUtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,5 +108,6 @@ public class DepartementService {
 
         return departementDel;
     }
+
 
 }

@@ -28,16 +28,16 @@ public class VilleController {
     public Ville findById(@PathVariable Integer id) {
         return this.villeService.findById(id);
     }
-/*
+
     @GetMapping("/libelle/{libelle}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Ville> findBylibelle(@PathVariable String libelle) {
         return this.villeService.findBylibelle(libelle);
     }
-*/
+
 
     //pas besoin de péciser plus, meme adresse que la "get" mais pas la meme methode ici en post
-    @PostMapping("") // dans le corps de la requete il y a un model d'objet de type guitare en Json pour créer l'objet
+    @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Ville create (@RequestBody Ville newVille) {
         return this.villeService.create(newVille);
