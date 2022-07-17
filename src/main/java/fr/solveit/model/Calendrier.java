@@ -39,15 +39,11 @@ public class Calendrier  implements Serializable {
     public Calendrier() {
     }
 
-    public Calendrier(Matiere matiere, Session session, Time heure_debut, Time heure_fin, Date date, Formateur formateur, FeuilleEmargement feuilleEmargement, Administration auteur) {
-        calendrierId.setMatiere(matiere);
-        calendrierId.setSession(session);
+    public Calendrier(CalendrierId calendrierId, Time heure_debut, Time heure_fin, Date date) {
+        this.calendrierId = calendrierId;
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
         this.date = date;
-        calendrierId.setFormateur(formateur);
-        calendrierId.setFeuilleEmargement(feuilleEmargement);
-        calendrierId.setAuteur(auteur);
     }
 
     public CalendrierId getCalendrierId() {

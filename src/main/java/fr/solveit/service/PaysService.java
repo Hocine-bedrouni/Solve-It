@@ -83,14 +83,15 @@ public class PaysService {
     }
 
 
-    public Pays findByLibelle(String libelle) {
+
+
+    public List<Pays> findBylibelle(String libelle) {
         Pays optPays = this.iPaysRepo.findByLibelle(libelle);
         if (optPays != null ){
-            return optPays;
+            return (List<Pays>) optPays;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-
     }
 }
 

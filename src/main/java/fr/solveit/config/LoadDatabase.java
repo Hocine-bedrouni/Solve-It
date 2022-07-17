@@ -13,7 +13,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.repository.query.Param;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class LoadDatabase {
@@ -22,11 +25,89 @@ public class LoadDatabase {
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
 	@Autowired
 	CompteService compteService;
-@Bean
-	CommandLineRunner initDatabase(IUtilisateurRepo user) {
-	return args -> {
-		System.out.println("test"+compteService.findAll());
-	};
+	@Autowired
+	IUtilisateurRepo utilisateurRepo;
+	@Autowired
+	ISessionRepo sessionRepo;
+	@Autowired
+	IMatiereRepo matiereRepo;
+	@Autowired
+	IFeuilleEmargementRepo feuilleEmargementRepo;
+	@Autowired
+	IEmploiTempsRepo emploiTempsRepo;
+	@Bean
+	public Matiere trouverMatiere(){
+		Matiere matiere;
+		matiere = matiereRepo.findById(1).get();
+		return matiere;
+	}
+	@Bean
+	public Session trouverSession(){
+		Session matiere;
+		matiere = sessionRepo.findById(1).get();
+		return matiere;
+	}
+	@Bean
+	public Formateur trouverFormateur(){
+		Formateur matiere;
+		matiere = (Formateur) utilisateurRepo.findById("179115900100113").get();
+		return matiere;
+	}
+	@Bean
+	public FeuilleEmargement trouverFeuilleEmargement(){
+		FeuilleEmargement matiere;
+		matiere = feuilleEmargementRepo.findById("2021802905_00").get();
+		return matiere;
+	}
+	@Bean
+	public Administration trouverAdministration(){
+		Administration matiere;
+		matiere = (Administration) utilisateurRepo.findById("123456").get();
+		return matiere;
+	}
+
+	@Bean
+	public Calendrier trouverCalendrier(ICalendrierRepo calendrierRepo){
+		CalendrierId calendrierId =new CalendrierId(trouverMatiere(),trouverSession(),trouverFormateur(),trouverFeuilleEmargement(), trouverAdministration());
+		Calendrier calendrier; //= new Calendrier( calendrierId,Time.valueOf("09:00:00"),Time.valueOf("11:00:00"), (java.util.Date) Date.valueOf("2021-09-16"));
+		calendrier= calendrierRepo.findById(calendrierId).get();
+		return calendrier;
+	}
+	@Bean
+	public EmploiTemps trouverEmploi(){
+		EmploiTempsId emploiTempsId = new EmploiTempsId((java.util.Date) Date.valueOf("2022-01-01"), (Administration) utilisateurRepo.findById("123456").get(),sessionRepo.findById(1).get()) ;
+		return emploiTempsRepo.findById(emploiTempsId).get();
+	}
+	@Bean
+	public List<Stagiaire> trouverStagiaire(){
+		return utilisateurRepo.findBySession(1);
+	}
+	@Bean
+	CommandLineRunner initDatabase(ICalendrierRepo calendrierRepo){//IFeuilleEmargementRepo feuilleEmargementRepo){//) {
+	//EmploiTempsId emploiTempsId = new EmploiTempsId((java.util.Date) Date.valueOf("2022-01-01"), (Administration) utilisateurRepo.findById("123456").get(),sessionRepo.findById(1).get()) ;
+	//EmploiTemps emploiTemps = new EmploiTemps(emploiTempsId,"x CQP DRVL",(java.util.Date) Date.valueOf("2021-09-24"),(java.util.Date) Date.valueOf("2021-09-16"));
+		//FeuilleEmargement feuilleEmargement = new FeuilleEmargement("2021802905_00","TP Mécanicien de Maintenance Automobile","SAVARY",Date.valueOf("2021-09-16"),Date.valueOf("2021-09-16"),Date.valueOf("2021-11-12"));
+		//CalendrierId calendrierId =new CalendrierId(matiereRepo.findById(1).get(),sessionRepo.findById(1).get(),(Formateur) utilisateurRepo.findById("179115900100113").get(),feuilleEmargementRepo.findById("2021802905_00").get(), (Administration) utilisateurRepo.findById("123456").get());
+		//Calendrier calendrier = new Calendrier( calendrierId,Time.valueOf("9:00"),Time.valueOf("11:00"), (java.util.Date) Date.valueOf("2021-09-16"));
+		Session sessiom = new Session(1,"CQF",Date.valueOf("2021-09-16"),Date.valueOf("2021-09-24"));
+		List<EmploiTemps> emploi = new ArrayList<>();
+		List<Calendrier> calendriers = new ArrayList<>();
+		List<Stagiaire> stagiaires = new ArrayList<>();
+		//EmploiTempsId emploiTempsId = new EmploiTempsId((java.util.Date) Date.valueOf("2022-01-01"), (Administration) utilisateurRepo.findById("123456").get(),sessionRepo.findById(1).get()) ;
+		//emploi.add(emploiTempsRepo.findById(emploiTempsId).get());
+		emploi.add(trouverEmploi());
+
+		calendriers.add(trouverCalendrier(calendrierRepo));
+		stagiaires = trouverStagiaire();
+		sessiom.setEmploiTemps(emploi);
+		sessiom.setCalendriers(calendriers);
+		sessiom.setUtilisateursNaissance(stagiaires);
+		return args -> {
+			//System.out.println("test"+emploiTempsRepo.save(emploiTemps));
+			//System.out.println("test"+feuilleEmargementRepo.save(feuilleEmargement));
+			System.out.println("test"+ sessionRepo.findById(1));//calendrierRepo.save(calendrier));
+
+		};
 
 	}
 /*	@Autowired

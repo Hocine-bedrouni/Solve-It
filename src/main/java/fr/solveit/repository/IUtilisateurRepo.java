@@ -26,6 +26,8 @@ public interface IUtilisateurRepo extends JpaRepository<Utilisateur, String> {
     List<Administration> findAllAdministration();
     @Query("select s from Stagiaire s left join s.session se left join Absence a where a.session = s.session and se.date_debut = :date")
     List<Stagiaire> findByAbsence(@Param("date") Date date);
+    @Query("select s from Stagiaire s where s.session.id = :id")
+    List<Stagiaire> findBySession(@Param("id") Integer id);
 
 
 
