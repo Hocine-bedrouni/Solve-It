@@ -80,7 +80,7 @@ public class LoadDatabase {
 	}
 	@Bean
 	public List<Stagiaire> trouverStagiaire(){
-		return utilisateurRepo.findBySession(1);
+		return null;//utilisateurRepo.findBySession(1);
 	}
 	@Bean
 	CommandLineRunner initDatabase(ICalendrierRepo calendrierRepo){//IFeuilleEmargementRepo feuilleEmargementRepo){//) {
@@ -105,7 +105,7 @@ public class LoadDatabase {
 		return args -> {
 			//System.out.println("test"+emploiTempsRepo.save(emploiTemps));
 			//System.out.println("test"+feuilleEmargementRepo.save(feuilleEmargement));
-			System.out.println("test"+ sessionRepo.findById(1));//calendrierRepo.save(calendrier));
+			System.out.println("test"+ utilisateurRepo.findBySession("CQF",Date.valueOf("2021-09-16"),Date.valueOf("2021-09-24")));//calendrierRepo.save(calendrier));
 
 		};
 
