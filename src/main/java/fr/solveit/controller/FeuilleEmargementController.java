@@ -31,7 +31,7 @@ public class FeuilleEmargementController {
 
     @GetMapping("/{date}")
     @ResponseStatus(code= HttpStatus.OK)
-    public List<FeuilleEmargement> findById(@PathVariable java.sql.Date date) {
+    public List<FeuilleEmargement> findAllByDateDebutFormation(@PathVariable java.sql.Date date) {
         return feuilleEmargementService.findAllByDateDebutFormation(date);
     }
 
