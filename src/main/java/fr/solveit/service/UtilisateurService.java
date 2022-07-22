@@ -49,6 +49,14 @@ public class UtilisateurService {
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
+
+    public List<Stagiaire> findBySession(String lib, Date date_debut,Date date_fin){
+        List<Stagiaire> optStagiaire= utilisateurRepo.findBySession(lib,date_debut,date_fin);
+        if(optStagiaire != null)
+            return optStagiaire;
+        else
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
     public Utilisateur create(Utilisateur utilisateur ){
         return utilisateurRepo.save(utilisateur );
     }

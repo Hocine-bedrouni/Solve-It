@@ -37,7 +37,7 @@ public class DepartementController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Departement> findBylibelle(@PathVariable String libelle) {
 
-        return this.departementService.findBylibelle(libelle);
+        return (List<Departement>) this.departementService.findByLibelle(libelle);
 
     }
 

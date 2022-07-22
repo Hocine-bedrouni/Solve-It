@@ -43,6 +43,11 @@ public class UtlisateurController {
     @GetMapping("/stagiaires/{date}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Stagiaire> findByAbsence(@PathVariable Date date){ return utilisateurService.findByAbsence(date);}
+
+    @GetMapping("/stagiaires/{lib}/{date_debut}/{date_fin}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Stagiaire> findBySession(@PathVariable("lib") String lib,@PathVariable(name = "date_debut")  Date date_debut,@PathVariable(name = "date_fin") Date date_fin){ return utilisateurService.findBySession(lib,date_debut,date_fin);}
+
     @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Utilisateur create(@RequestBody Utilisateur utilisateur) {
