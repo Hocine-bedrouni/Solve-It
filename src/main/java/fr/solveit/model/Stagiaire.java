@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
@@ -41,6 +43,7 @@ public class Stagiaire extends Utilisateur{
     private Blob signature;
     @ManyToOne
     @JoinColumn(name="session_id")
+    @JsonManagedReference
     private Session session;
 
     @ManyToOne

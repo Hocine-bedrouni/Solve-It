@@ -15,4 +15,5 @@ public interface IFeuilleEmargementRepo extends JpaRepository<FeuilleEmargement,
 
     @Query("select f from FeuilleEmargement f where f.date_debut_formation = :date")
     List<FeuilleEmargement> findAllByDateDebutFormation(@Param("date") java.sql.Date date);
+
 }

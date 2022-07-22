@@ -28,12 +28,9 @@ public class EmploiTemps  implements Serializable {
     public EmploiTemps() {
     }
 
-    public EmploiTemps(Administration auteur, Session session, String libelle, Date date_debut_semaine, Date date_fin_semaine, Date date_edition) {
-
-        this.emploiTempsId.setAuteur(auteur);
-        this.emploiTempsId.setSession(session);
+    public EmploiTemps(EmploiTempsId emploiTempsId, String libelle, Date date_fin_semaine, Date date_edition) {
+        this.emploiTempsId = emploiTempsId;
         this.libelle = libelle;
-        emploiTempsId.setDateDebutSemaine( date_debut_semaine);
         this.date_fin_semaine = date_fin_semaine;
         this.date_edition = date_edition;
     }

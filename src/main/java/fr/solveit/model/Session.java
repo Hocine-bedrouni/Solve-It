@@ -1,4 +1,7 @@
 package fr.solveit.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,13 +22,16 @@ public class Session implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date_fin;
 
-    @OneToMany(mappedBy = "session", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "session",fetch = FetchType.EAGER )
+    @JsonBackReference
     private List<Stagiaire> utilisateursNaissance = new ArrayList<Stagiaire>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "emploiTempsId.session",fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<EmploiTemps> emploiTemps = new ArrayList<EmploiTemps>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "calendrierId.session",fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Calendrier> calendriers = new ArrayList<Calendrier>();
 
     public Session() {
@@ -68,5 +74,46 @@ public class Session implements Serializable {
 
     public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Stagiaire> getUtilisateursNaissance() {
+        return utilisateursNaissance;
+    }
+
+    public void setUtilisateursNaissance(List<Stagiaire> utilisateursNaissance) {
+        this.utilisateursNaissance = utilisateursNaissance;
+    }
+
+    public List<EmploiTemps> getEmploiTemps() {
+        return emploiTemps;
+    }
+
+    public void setEmploiTemps(List<EmploiTemps> emploiTemps) {
+        this.emploiTemps = emploiTemps;
+    }
+
+    public List<Calendrier> getCalendriers() {
+        return calendriers;
+    }
+
+    public void setCalendriers(List<Calendrier> calendriers) {
+        this.calendriers = calendriers;
+    }
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                ", date_debut=" + date_debut +
+                ", date_fin=" + date_fin +
+               /* ", utilisateursNaissance=" + utilisateursNaissance +
+                ", emploiTemps=" + emploiTemps +
+                ", calendriers=" + calendriers +*/
+                '}';
     }
 }

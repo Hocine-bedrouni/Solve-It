@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class EmploiTempsId implements Serializable {
     private Administration auteur;
     @ManyToOne
     @JoinColumn(name = "session_id")
+    @JsonManagedReference
     private Session session;
 
     @Temporal(TemporalType.DATE)
