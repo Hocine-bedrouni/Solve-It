@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class SituationProrfessionnelle implements Serializable {
     private boolean inscription_pole_emploi;
 
     @OneToMany( fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Stagiaire> stagiaires = new ArrayList<>();
 
     public SituationProrfessionnelle() {

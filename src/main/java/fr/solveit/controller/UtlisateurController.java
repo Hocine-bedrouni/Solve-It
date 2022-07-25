@@ -51,6 +51,8 @@ public class UtlisateurController {
     @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Utilisateur create(@RequestBody Utilisateur utilisateur) {
+
+        System.out.println("objet"+utilisateur);
         return utilisateurService.create(utilisateur);
     }
 
@@ -66,6 +68,7 @@ public class UtlisateurController {
     @DeleteMapping("/{numsecu}")
     @ResponseStatus(code=HttpStatus.ACCEPTED)
     public Utilisateur delete(@PathVariable String numsecu) {
+
         return utilisateurService.delete(numsecu);
     }
 }

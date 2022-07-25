@@ -1,5 +1,6 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.Date;
 
 @Entity
 @DiscriminatorValue(value = "S")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Stagiaire extends Utilisateur{
 
     @Column
@@ -43,7 +45,6 @@ public class Stagiaire extends Utilisateur{
     private Blob signature;
     @ManyToOne
     @JoinColumn(name="session_id")
-    @JsonManagedReference
     private Session session;
 
     @ManyToOne
