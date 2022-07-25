@@ -23,7 +23,7 @@ public class Session implements Serializable {
     private Date date_fin;
 
     @OneToMany(mappedBy = "session",fetch = FetchType.EAGER )
-    @JsonBackReference
+    //@JsonBackReference(value = "Session")
     private List<Stagiaire> utilisateursNaissance = new ArrayList<Stagiaire>();
 
     @OneToMany(mappedBy = "emploiTempsId.session",fetch = FetchType.LAZY)

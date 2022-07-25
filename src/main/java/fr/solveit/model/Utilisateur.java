@@ -1,6 +1,7 @@
 package fr.solveit.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -14,7 +15,8 @@ import java.util.Date;
 @DiscriminatorColumn(name="typeUtilisateur")
 @JsonDeserialize(as = Stagiaire.class)
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="numSecu")
-public abstract class Utilisateur {
+@JsonIgnoreProperties
+public abstract class Utilisateur implements Serializable{
     /**
      *  numéro de sécurité social
      */

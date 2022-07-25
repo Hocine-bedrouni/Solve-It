@@ -4,15 +4,18 @@ import fr.solveit.model.*;
 import fr.solveit.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Date;
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/utilisateurs")
+@RequestMapping(value = "/utilisateurs")
 public class UtlisateurController {
     @Autowired
     private UtilisateurService utilisateurService;
@@ -48,11 +51,11 @@ public class UtlisateurController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Stagiaire> findBySession(@PathVariable("lib") String lib,@PathVariable(name = "date_debut")  Date date_debut,@PathVariable(name = "date_fin") Date date_fin){ return utilisateurService.findBySession(lib,date_debut,date_fin);}
 
-    @PostMapping("")
+    @PostMapping(value = "")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Utilisateur create(@RequestBody Utilisateur utilisateur) {
 
-        System.out.println("objet"+utilisateur);
+        System.out.println("objet");
         return utilisateurService.create(utilisateur);
     }
 

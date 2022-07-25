@@ -21,7 +21,7 @@ public class SituationProrfessionnelle implements Serializable {
     private boolean inscription_pole_emploi;
 
     @OneToMany( fetch = FetchType.LAZY)
-    @JsonBackReference
+    //@JsonBackReference(value = "SituationProrfessionnelle")
     private List<Stagiaire> stagiaires = new ArrayList<>();
 
     public SituationProrfessionnelle() {

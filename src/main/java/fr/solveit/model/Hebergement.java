@@ -19,7 +19,7 @@ public class Hebergement implements Serializable {
     private String abrv;
 
     @OneToMany(mappedBy = "hebergement", fetch = FetchType.LAZY)
-    @JsonBackReference
+    //@JsonBackReference(value = "Hebergement")
     private List<Stagiaire> stagiaires = new ArrayList<Stagiaire>();
 
     public Hebergement() {
