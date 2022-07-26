@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ public class CalendrierId implements Serializable {
     private Matiere matiere;
     @ManyToOne
     @JoinColumn(name="session_id")
+    @JsonManagedReference
     private Session session;
     @ManyToOne
     @JoinColumn(name = "formateur_num_secu")

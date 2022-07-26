@@ -1,12 +1,22 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="typeUtilisateur")
-public abstract class Utilisateur  implements Serializable {
+@JsonDeserialize(as = Stagiaire.class)
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="numSecu")
+@JsonIgnoreProperties
+public abstract class Utilisateur implements Serializable{
     /**
      *  numéro de sécurité social
      */

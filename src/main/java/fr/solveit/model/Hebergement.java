@@ -1,5 +1,7 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Hebergement implements Serializable {
     private String abrv;
 
     @OneToMany(mappedBy = "hebergement", fetch = FetchType.LAZY)
+    //@JsonBackReference(value = "Hebergement")
     private List<Stagiaire> stagiaires = new ArrayList<Stagiaire>();
 
     public Hebergement() {

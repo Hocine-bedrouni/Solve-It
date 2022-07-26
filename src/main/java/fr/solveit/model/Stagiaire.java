@@ -1,11 +1,19 @@
 package fr.solveit.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
 
 @Entity
 @DiscriminatorValue(value = "S")
+@JsonDeserialize(as = Stagiaire.class)
+@JsonIgnoreProperties
 public class Stagiaire extends Utilisateur{
 
     @Column
@@ -37,18 +45,21 @@ public class Stagiaire extends Utilisateur{
     private String transport;
     @Column
     private String allocation;
-    @Column
-    private Blob signature;
+    //@Column
+    //private Blob signature;
     @ManyToOne
     @JoinColumn(name="session_id")
+    @JsonManagedReference(value = "Session")
     private Session session;
 
     @ManyToOne
     @JoinColumn(name="hebergement_id")
+    @JsonManagedReference(value = "Hebergement")
     private Hebergement hebergement;
 
     @ManyToOne
     @JoinColumn(name="situation_professionnelle_id")
+    @JsonManagedReference(value = "SituationProrfessionnelle")
     private SituationProrfessionnelle situationProfessionnelle;
 
 
@@ -56,7 +67,7 @@ public class Stagiaire extends Utilisateur{
         super();
     }
 
-    public Stagiaire(String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville villeNaissance, String numSecu, String diplome, String niveau_entree, boolean difficulte, boolean handicape, boolean domtom, String situation, int nbr_travailleur, boolean enfant, String logement, String parent_francais, boolean rique_perte_logement, String origine_formation, String transport, String allocation, Session session, Hebergement hebergement, SituationProrfessionnelle situationProfessionnelle, Blob signature) {
+    public Stagiaire(String nom, String prenom, Date dateNaissance, String adresse, String civilite, Compte compte, Ville villeHabitation, Ville villeNaissance, String numSecu, String diplome, String niveau_entree, boolean difficulte, boolean handicape, boolean domtom, String situation, int nbr_travailleur, boolean enfant, String logement, String parent_francais, boolean rique_perte_logement, String origine_formation, String transport, String allocation, Session session, Hebergement hebergement, SituationProrfessionnelle situationProfessionnelle){//, Blob signature) {
         super(numSecu, nom, prenom, dateNaissance, adresse, civilite, compte, villeHabitation, villeNaissance);
 
         this.diplome = diplome;
@@ -76,7 +87,7 @@ public class Stagiaire extends Utilisateur{
         this.session = session;
         this.hebergement = hebergement;
         this.situationProfessionnelle = situationProfessionnelle;
-        this.signature = signature;
+        //77this.signature = signature;
     }
 
     public String getNumSecu() {
@@ -223,13 +234,14 @@ public class Stagiaire extends Utilisateur{
         this.situationProfessionnelle = situationProfessionnelle;
     }
 
-    public Blob getSignature() {
+
+    /*public Blob getSignature() {
         return signature;
     }
 
     public void setSignature(Blob signature) {
         this.signature = signature;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -252,7 +264,7 @@ public class Stagiaire extends Utilisateur{
                 ", session=" + session +
                 ", hebergement=" + hebergement +
                 ", situationProfessionnelle=" + situationProfessionnelle +
-                ", signature=" + signature +
+              //  ", signature=" + signature +
                 '}';
     }
 }
